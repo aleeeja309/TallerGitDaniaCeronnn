@@ -13,19 +13,17 @@
 
     <script>
         function traducirNumero() {
-            let numero = document.getElementById('numero').value;
+            let numero = parseInt(document.getElementById('numero').value);
             let resultado = '';
 
-            const numerosALetras = {
-                1: 'UNO',
-                2: 'DOS',
-                3: 'TRES',
-                4: 'CUATRO',
-                5: 'CINCO'
-            };
+            const unidades = ['','UNO', 'DOS', 'TRES', 'CUATRO', 'CINCO', 'SEIS', 'SIETE', 'OCHO', 'NUEVE', 'DIEZ', 
+                        'ONCE', 'DOCE', 'TRECE', 'CATORCE', 'QUINCE', 'DIECISEIS', 'DIECISIETE', 'DIECIOCHO', 'DIECINUEVE'];
+            const decenas = ['', '', 'VEINTE', 'TREINTA', 'CUARENTA', 'CINCUENTA', 'SESENTA', 'SETENTA', 'OCHENTA', 'NOVENTA'];
 
-            if (numerosALetras[numero]) {
-                resultado = numerosALetras[numero];
+            if (numero < 20) {
+                resultado = unidades[numero];
+            } else if (numero < 100) {
+                resultado = decenas[Math.floor(numero / 10)] + (numero % 10 === 0 ? '' : ' Y ' + unidades[numero % 10]);
             } else {
                 resultado = 'Número no soportado';
             }
